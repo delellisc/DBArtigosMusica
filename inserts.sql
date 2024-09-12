@@ -1,5 +1,5 @@
 -- populando banco de dados
-INSERT INTO categoria (nome, ultima_atualizacao) VALUES
+INSERT INTO categoria (nome) VALUES
 ('Instrumentos Musicais'),
 ('Equipamentos de Áudio'),
 ('Acessórios'),
@@ -17,7 +17,7 @@ INSERT INTO desconto (titulo, valor_desconto) VALUES
 
 INSERT INTO produto (categoria_id, desconto_id, fornecedor_id, nome, descricao, marca, valor) VALUES
 (1, 1, 1, 'Guitarra Elétrica', 'Guitarra Elétrica Stratocaster', 'Fender', 3500.00),
-(1, 2, 1, 'Ukulele Concert', 'Ukulele Concert Mogno', 'Shelby', 260.00)
+(1, 2, 1, 'Ukulele Concert', 'Ukulele Concert Mogno', 'Shelby', 260.00),
 (2, 2, 2, 'Mesa de Som', 'Mesa de Som Analógica 16 canais', 'Yamaha', 2500.00),
 (3, 3, 3, 'Cabo P10', 'Cabo P10 de 3 metros', 'Santo Ângelo', 50.00),
 (4, NULL, 1, 'Vinil The Beatles - Abbey Road', 'Álbum de vinil clássico dos Beatles', 'EMI', 150.00);
