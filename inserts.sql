@@ -29,14 +29,14 @@ INSERT INTO estoque (produto_id, quantidade) VALUES
 (4, 20);
 
 INSERT INTO cliente (nome, sobrenome, cpf, fidelidade, data_criacao) VALUES
-('João', 'Silva', '123.456.789-10', 50.00, NOW()),
-('Maria', 'Oliveira', '987.654.321-00', 20.00, NOW()),
-('Carlos', 'Santos', '111.222.333-44', 100.00, NOW());
+('Eliezio', 'Soares', '123.456.789-10', 50.00, NOW()),
+('Moroni', 'Neres', '987.654.321-00', 20.00, NOW()),
+('Keylly', 'Eyglys', '111.222.333-44', 100.00, NOW());
 
 INSERT INTO funcionario (nome, sobrenome, cpf, ativo, login, senha) VALUES
-('Pedro', 'Almeida', '333.444.555-66', 1, 'pedro.almeida', 'senha123'),
-('Ana', 'Costa', '444.555.666-77', 1, 'ana.costa', 'senha456'),
-('Lucas', 'Pereira', '555.666.777-88', 0, 'lucas.pereira', 'senha789');
+('Thiago', 'Alves', '333.444.555-66', 1, 'thiago.alves', 'canalha123'),
+('Ismaelly', 'Eyre', '444.555.666-77', 1, 'ismaelly.eyre', 'pegaavisao456'),
+('Maria', 'Fernanda', '555.666.777-88', 0, 'maria.fernanda', 'nomenosabonete789');
 
 INSERT INTO pedido (funcionario_id, cliente_id, produto_id, data_pedido, previsao_entrega, data_entrega, estoque_id) VALUES
 (1, 1, 1, NOW(), NOW() + INTERVAL '7 days', NULL, 1),
