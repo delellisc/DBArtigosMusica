@@ -52,12 +52,18 @@ INSERT INTO funcionario (nome, sobrenome, cpf, ativo, login, senha, data_criacao
 
 INSERT INTO pedido (funcionario_id, cliente_id, produto_id, data_pedido, previsao_entrega, estoque_id, ultima_atualizacao) VALUES
 (1, 1, 1, NOW(), NOW() + INTERVAL '7 days', 1, NOW()),
-(2, 2, 2, NOW(), NOW() + INTERVAL '5 days', 2, NOW());
+(2, 2, 2, NOW(), NOW() + INTERVAL '5 days', 2, NOW()),
+(2, 3, 1, NOW(), NOW() + INTERVAL '5 days', 2, NOW());
 
 INSERT INTO pagamento (pedido_id, funcionario_id, cliente_id, desconto_id, valor, data_pagamento) VALUES
 (1, 1, 1, 1, 1800.00, NOW()),
-(2, 2, 2, 2, 200.00, NOW());
+(2, 2, 2, 2, 200.00, NOW()),
+(3, 1, 2, 1, 1200.00, NOW());
 
 INSERT INTO item_pedido (pedido_id, produto_id, quantidade, ultima_atualizacao) VALUES
 (1, 1, 1, NOW()),
-(2, 2, 1, NOW());
+(1, 2, 1, NOW()),
+(1, 4, 1, NOW()),
+(2, 2, 1, NOW()),
+(2, 3, 1, NOW()),
+(3, 2, 1, NOW());
