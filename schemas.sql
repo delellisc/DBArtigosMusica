@@ -50,6 +50,8 @@ CREATE TABLE funcionario(
 	ativo SMALLINT,
 	login TEXT,
 	senha TEXT,
+	data_criacao TIMESTAMP,
+	data_desligamento TIMESTAMP,
 	ultima_atualizacao TIMESTAMP
 );
 CREATE TABLE pedido(
