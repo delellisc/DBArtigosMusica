@@ -38,7 +38,6 @@ CREATE TABLE cliente(
 	nome TEXT,
 	sobrenome TEXT,
 	cpf VARCHAR(14),
-	fidelidade NUMERIC,
 	data_criacao TIMESTAMP,
 	ultima_atualizacao TIMESTAMP
 );
@@ -47,7 +46,6 @@ CREATE TABLE funcionario(
 	nome TEXT,
 	sobrenome TEXT,
 	cpf VARCHAR(14),
-	ativo SMALLINT,
 	login TEXT,
 	senha TEXT,
 	data_criacao TIMESTAMP,
