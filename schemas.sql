@@ -67,11 +67,13 @@ CREATE TABLE pedido(
 CREATE TABLE pagamento(
 	pagamento_id SERIAL PRIMARY KEY,
 	pedido_id INTEGER,
+	cliente_id INTEGER,
 	funcionario_id INTEGER,
 	desconto_id INTEGER,
 	valor NUMERIC,
 	data_pagamento TIMESTAMP,
 	FOREIGN KEY (pedido_id) REFERENCES pedido(pedido_id),
+	FOREIGN KEY (cliente_id) REFERENCES cliente(cliente_id),
 	FOREIGN KEY (funcionario_id) REFERENCES funcionario(funcionario_id),
 	FOREIGN KEY (desconto_id) REFERENCES desconto(desconto_id)
 	
