@@ -40,15 +40,15 @@ INSERT INTO estoque (produto_id, quantidade, ultima_atualizacao) VALUES
 (8, 7, NOW()),
 (9, 12, NOW());
 
-INSERT INTO cliente (nome, sobrenome, cpf, fidelidade, data_criacao, ultima_atualizacao) VALUES
-('Eliezio', 'Soares', '123.456.789-10', 50.00, NOW(), NOW()),
-('Moroni', 'Neres', '987.654.321-00', 20.00, NOW(), NOW()),
-('Keylly', 'Eyglys', '111.222.333-44', 100.00, NOW(), NOW());
+INSERT INTO cliente (nome, sobrenome, cpf, data_criacao, ultima_atualizacao) VALUES
+('Eliezio', 'Soares', '123.456.789-10', NOW(), NOW()),
+('Moroni', 'Neres', '987.654.321-00', NOW(), NOW()),
+('Keylly', 'Eyglys', '111.222.333-44', NOW(), NOW());
 
-INSERT INTO funcionario (nome, sobrenome, cpf, ativo, login, senha, data_criacao, ultima_atualizacao) VALUES
-('Thiago', 'Alves', '333.444.555-66', 1, 'thiago.alves', 'canalha123', NOW(), NOW()),
-('Ismaelly', 'Eyre', '444.555.666-77', 1, 'ismaelly.eyre', 'pegaavisao456', NOW(), NOW()),
-('Maria', 'Fernanda', '555.666.777-88', 0, 'maria.fernanda', 'nomenosabonete789', NOW(), NOW());
+INSERT INTO funcionario (nome, sobrenome, cpf, login, senha, data_criacao, ultima_atualizacao) VALUES
+('Thiago', 'Alves', '333.444.555-66', 'thiago.alves', 'canalha123', NOW(), NOW()),
+('Ismaelly', 'Eyre', '444.555.666-77', 'ismaelly.eyre', 'pegaavisao456', NOW(), NOW()),
+('Maria', 'Fernanda', '555.666.777-88', 'maria.fernanda', 'nomenosabonete789', NOW(), NOW());
 
 INSERT INTO pedido (funcionario_id, cliente_id, produto_id, data_pedido, previsao_entrega, estoque_id, ultima_atualizacao) VALUES
 (1, 1, 1, NOW(), NOW() + INTERVAL '7 days', 1, NOW()),
