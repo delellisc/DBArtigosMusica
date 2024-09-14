@@ -61,7 +61,6 @@ CREATE TABLE pedido(
 	data_pedido TIMESTAMP,
 	previsao_entrega TIMESTAMP,
 	data_entrega TIMESTAMP,
-	estoque_id INTEGER,
 	ultima_atualizacao TIMESTAMP,
 	FOREIGN KEY (funcionario_id) REFERENCES funcionario(funcionario_id),
 	FOREIGN KEY (cliente_id) REFERENCES cliente(cliente_id),
