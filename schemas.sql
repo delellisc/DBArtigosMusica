@@ -46,6 +46,7 @@ CREATE TABLE funcionario(
 	nome TEXT,
 	sobrenome TEXT,
 	cpf VARCHAR(14),
+	ativo SMALLINT,
 	login TEXT,
 	senha TEXT,
 	data_criacao TIMESTAMP,
