@@ -83,6 +83,7 @@ CREATE TABLE item_pedido(
 	produto_id INTEGER,
 	quantidade INTEGER,
 	ultima_atualizacao TIMESTAMP,
+	PRIMARY KEY (pedido_id, produto_id),
 	FOREIGN KEY (pedido_id) REFERENCES pedido(pedido_id),
 	FOREIGN KEY (produto_id) REFERENCES produto(produto_id)
 );
