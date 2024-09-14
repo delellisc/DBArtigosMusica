@@ -85,6 +85,7 @@ CREATE TABLE pagamento(
 CREATE TABLE item_pedido(
 	pedido_id INTEGER,
 	produto_id INTEGER,
+	quantidade INTEGER,
 	ultima_atualizacao TIMESTAMP,
 	FOREIGN KEY (pedido_id) REFERENCES pedido(pedido_id),
 	FOREIGN KEY (produto_id) REFERENCES produto(produto_id)
