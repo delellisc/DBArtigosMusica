@@ -17,7 +17,6 @@ CREATE TABLE desconto(
 CREATE TABLE produto(
 	produto_id SERIAL PRIMARY KEY,
 	categoria_id INTEGER,
-	desconto_id INTEGER,
 	fornecedor_id INTEGER,
 	nome TEXT,
 	descricao TEXT,
@@ -25,7 +24,6 @@ CREATE TABLE produto(
 	valor NUMERIC,
 	ultima_atualizacao TIMESTAMP,
 	FOREIGN KEY (categoria_id) REFERENCES categoria(categoria_id),
-	FOREIGN KEY (desconto_id) REFERENCES desconto(desconto_id),
 	FOREIGN KEY (fornecedor_id) REFERENCES fornecedor(fornecedor_id)
 );
 CREATE TABLE estoque(
