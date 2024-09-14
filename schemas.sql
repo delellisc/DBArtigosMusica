@@ -57,14 +57,12 @@ CREATE TABLE pedido(
 	pedido_id SERIAL PRIMARY KEY,
 	funcionario_id INTEGER,
 	cliente_id INTEGER,
-	produto_id INTEGER,
 	data_pedido TIMESTAMP,
 	previsao_entrega TIMESTAMP,
 	data_entrega TIMESTAMP,
 	ultima_atualizacao TIMESTAMP,
 	FOREIGN KEY (funcionario_id) REFERENCES funcionario(funcionario_id),
-	FOREIGN KEY (cliente_id) REFERENCES cliente(cliente_id),
-	FOREIGN KEY (produto_id) REFERENCES produto(produto_id)
+	FOREIGN KEY (cliente_id) REFERENCES cliente(cliente_id)
 );
 CREATE TABLE pagamento(
 	pagamento_id SERIAL PRIMARY KEY,
