@@ -1,3 +1,4 @@
+-- Fernanda
 -- produtos acima da média de preço da categoria
 SELECT p.produto_id, p.nome, p.valor, p.categoria_id
 FROM produto p
