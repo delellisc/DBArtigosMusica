@@ -12,7 +12,8 @@ CREATE TABLE fornecedor(
 CREATE TABLE desconto(
 	desconto_id SERIAL PRIMARY KEY,
 	titulo TEXT,
-	valor_desconto NUMERIC
+	valor_desconto NUMERIC,
+	ultima_atualizacao TIMESTAMP
 );
 CREATE TABLE produto(
 	produto_id SERIAL PRIMARY KEY,
@@ -72,6 +73,7 @@ CREATE TABLE pagamento(
 	desconto_id INTEGER,
 	valor NUMERIC,
 	data_pagamento TIMESTAMP,
+	ultima_atualizacao TIMESTAMP
 	FOREIGN KEY (pedido_id) REFERENCES pedido(pedido_id),
 	FOREIGN KEY (cliente_id) REFERENCES cliente(cliente_id),
 	FOREIGN KEY (funcionario_id) REFERENCES funcionario(funcionario_id),
