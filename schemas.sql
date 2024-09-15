@@ -5,7 +5,7 @@ CREATE TABLE categoria(
 );
 CREATE TABLE fornecedor(
 	fornecedor_id SERIAL PRIMARY KEY,
-	cnpj VARCHAR(18),
+	cnpj VARCHAR(18) UNIQUE,
 	endereco TEXT,
 	ultima_atualizacao TIMESTAMP
 );
@@ -38,7 +38,7 @@ CREATE TABLE cliente(
 	cliente_id SERIAL PRIMARY KEY,
 	nome TEXT,
 	sobrenome TEXT,
-	cpf VARCHAR(14),
+	cpf VARCHAR(14) UNIQUE,
 	data_criacao TIMESTAMP,
 	ultima_atualizacao TIMESTAMP
 );
@@ -46,7 +46,7 @@ CREATE TABLE funcionario(
 	funcionario_id SERIAL PRIMARY KEY,
 	nome TEXT,
 	sobrenome TEXT,
-	cpf VARCHAR(14),
+	cpf VARCHAR(14) UNIQUE,
 	ativo SMALLINT,
 	login TEXT,
 	senha TEXT,
