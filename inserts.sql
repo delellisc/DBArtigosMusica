@@ -12,10 +12,10 @@ INSERT INTO fornecedor (cnpj, endereco, ultima_atualizacao) VALUES
 ('55.444.333/0001-20', 'Rua XV de Novembro, 1010, Curitiba', NOW()),
 ('66.777.888/0001-30', 'Av. Paulista, 1500, São Paulo', NOW());
 
-INSERT INTO desconto (titulo, valor_desconto) VALUES
-('Desconto de Inauguração', 15.00),
-('Desconto de Verão', 20.00),
-('Desconto de Músico Profissional', 25.00);
+INSERT INTO desconto (titulo, valor_desconto, ultima_atualizacao) VALUES
+('Desconto de Inauguração', 15.00, NOW()),
+('Desconto de Verão', 20.00, , NOW()),
+('Desconto de Músico Profissional', 25.00, , NOW());
 
 INSERT INTO produto (categoria_id, fornecedor_id, nome, descricao, marca, valor, ultima_atualizacao) VALUES
 (1, 1, 'Guitarra Elétrica', 'Guitarra Elétrica Stratocaster', 'Fender', 3500.00, NOW()),
@@ -55,10 +55,10 @@ INSERT INTO pedido (funcionario_id, cliente_id, data_pedido, previsao_entrega, u
 (2, 2, NOW(), NOW() + INTERVAL '5 days', NOW()),
 (2, 3, NOW(), NOW() + INTERVAL '5 days', NOW());
 
-INSERT INTO pagamento (pedido_id, funcionario_id, cliente_id, desconto_id, valor, data_pagamento) VALUES
-(1, 1, 1, 1, 1800.00, NOW()),
-(2, 2, 2, 2, 200.00, NOW()),
-(3, 1, 2, 1, 1200.00, NOW());
+INSERT INTO pagamento (pedido_id, funcionario_id, cliente_id, desconto_id, valor, data_pagamento, ultima_atualizacao) VALUES
+(1, 1, 1, 1, 1800.00, NOW(), NOW()),
+(2, 2, 2, 2, 200.00, NOW(), NOW()),
+(3, 1, 2, 1, 1200.00, NOW(), NOW());
 
 INSERT INTO item_pedido (pedido_id, produto_id, quantidade, ultima_atualizacao) VALUES
 (1, 1, 1, NOW()),
