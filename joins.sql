@@ -23,13 +23,12 @@ INNER JOIN estoque e ON p.produto_id = e.produto_id
 INNER JOIN fornecedor f ON p.fornecedor_id = f.fornecedor_id;
 
 -- seleciona nome do produto, título do desconto aplicado e valor total do pagamento
-SELECT pe.pedido_id AS pedido, STRING_AGG(p.nome, ', ') AS produtos, d.titulo AS desconto, pa.valor AS valor_pagamento
+SELECT pe.pedido_id AS pedido, p.nome AS produto, d.titulo AS desconto, pa.valor AS valor_pagamento
 FROM pagamento pa
 INNER JOIN pedido pe ON pa.pedido_id = pe.pedido_id
 INNER JOIN item_pedido ip ON ip.pedido_id = pe.pedido_id
 INNER JOIN produto p ON ip.produto_id = p.produto_id
-INNER JOIN desconto d ON pa.desconto_id = d.desconto_id
-GROUP BY pe.pedido_id, d.titulo, pa.valor;
+INNER JOIN desconto d ON pa.desconto_id = d.desconto_id;
 
 -- seleciona nome do cliente, nome do produto e quantidade do item no pedido
 SELECT c.nome AS cliente, p.nome AS produto, ip.quantidade AS quantidade
