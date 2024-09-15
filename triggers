@@ -1,0 +1,143 @@
+-- CATEGORIA
+-- ATUALIZAÇÃO DE TIMESTAMP
+CREATE OR REPLACE FUNCTION Atualizar_Ultima_Atualizacao_Categoria() RETURNS TRIGGER AS $$
+BEGIN
+	NEW.ultima_atualizacao = CURRENT_TIMESTAMP;
+	RETURN NEW;
+END;
+$$ LANGUAGE PLPGSQL;
+CREATE OR REPLACE TRIGGER Atualizar_Ultima_Atualizacao_Categoria BEFORE INSERT OR UPDATE ON Categoria
+FOR EACH ROW EXECUTE FUNCTION Atualizar_Ultima_Atualizacao_Categoria();
+
+
+-- FORNECEDOR
+-- ATUALIZAÇÃO DE TIMESTAMP
+CREATE OR REPLACE FUNCTION Atualizar_Ultima_Atualizacao_Fornecedor() RETURNS TRIGGER AS $$
+BEGIN
+	NEW.ultima_atualizacao = CURRENT_TIMESTAMP;
+	RETURN NEW;
+END;
+$$ LANGUAGE PLPGSQL;
+CREATE OR REPLACE TRIGGER Atualizar_Ultima_Atualizacao_Fornecedor BEFORE INSERT OR UPDATE ON Fornecedor
+FOR EACH ROW EXECUTE FUNCTION Atualizar_Ultima_Atualizacao_Fornecedor();
+
+
+-- DESCONTO
+-- ATUALIZAÇÃO DE TIMESTAMP
+CREATE OR REPLACE FUNCTION Atualizar_Ultima_Atualizacao_Desconto() RETURNS TRIGGER AS $$
+BEGIN
+	NEW.ultima_atualizacao = CURRENT_TIMESTAMP;
+	RETURN NEW;
+END;
+$$ LANGUAGE PLPGSQL;
+CREATE OR REPLACE TRIGGER Atualizar_Ultima_Atualizacao_Desconto BEFORE INSERT OR UPDATE ON Desconto
+FOR EACH ROW EXECUTE FUNCTION Atualizar_Ultima_Atualizacao_Desconto();
+
+
+-- PRODUTO
+-- ATUALIZAÇÃO DE TIMESTAMP
+CREATE OR REPLACE FUNCTION Atualizar_Ultima_Atualizacao_Produto() RETURNS TRIGGER AS $$
+BEGIN
+	NEW.ultima_atualizacao = CURRENT_TIMESTAMP;
+	RETURN NEW;
+END;
+$$ LANGUAGE PLPGSQL;
+CREATE OR REPLACE TRIGGER Atualizar_Ultima_Atualizacao_Produto BEFORE INSERT OR UPDATE ON Produto
+FOR EACH ROW EXECUTE FUNCTION Atualizar_Ultima_Atualizacao_Produto();
+
+
+-- ESTOQUE
+-- ATUALIZAÇÃO DE TIMESTAMP
+CREATE OR REPLACE FUNCTION Atualizar_Ultima_Atualizacao_Estoque() RETURNS TRIGGER AS $$
+BEGIN
+	NEW.ultima_atualizacao = CURRENT_TIMESTAMP;
+	RETURN NEW;
+END;
+$$ LANGUAGE PLPGSQL;
+CREATE OR REPLACE TRIGGER Atualizar_Ultima_Atualizacao_Estoque BEFORE INSERT OR UPDATE ON Estoque
+FOR EACH ROW EXECUTE FUNCTION Atualizar_Ultima_Atualizacao_Estoque();
+
+
+-- ATUALIZAÇÃO DE QUANTIDADE EM ESTOQUE
+CREATE OR REPLACE FUNCTION Atualizar_Quantidade_Estoque() RETURNS TRIGGER AS $$
+BEGIN
+    UPDATE Estoque
+    SET quantidade = quantidade - NEW.quantidade
+    WHERE produto_id = NEW.produto_id;
+    RETURN NEW;
+END;
+$$ LANGUAGE PLPGSQL;
+CREATE OR REPLACE TRIGGER Atualizar_Quantidade_Estoque AFTER INSERT OR UPDATE ON Item_Pedido
+FOR EACH ROW EXECUTE FUNCTION Atualizar_Quantidade_Estoque();
+
+
+-- CLIENTE
+-- ATUALIZAÇÃO DE TIMESTAMP
+CREATE OR REPLACE FUNCTION Atualizar_Ultima_Atualizacao_Cliente() RETURNS TRIGGER AS $$
+BEGIN
+	NEW.ultima_atualizacao = CURRENT_TIMESTAMP;
+	RETURN NEW;
+END;
+$$ LANGUAGE PLPGSQL;
+CREATE OR REPLACE TRIGGER Atualizar_Ultima_Atualizacao_Cliente BEFORE INSERT OR UPDATE ON Cliente
+FOR EACH ROW EXECUTE FUNCTION Atualizar_Ultima_Atualizacao_Cliente();
+
+
+-- FUNCIONARIO
+-- ATUALIZAÇÃO DE TIMESTAMP
+CREATE OR REPLACE FUNCTION Atualizar_Ultima_Atualizacao_Funcionario() RETURNS TRIGGER AS $$
+BEGIN
+	NEW.ultima_atualizacao = CURRENT_TIMESTAMP;
+	RETURN NEW;
+END;
+$$ LANGUAGE PLPGSQL;
+CREATE OR REPLACE TRIGGER Atualizar_Ultima_Atualizacao_Funcionario BEFORE INSERT OR UPDATE ON Funcionario
+FOR EACH ROW EXECUTE FUNCTION Atualizar_Ultima_Atualizacao_Funcionario();
+
+-- INSERÇÃO DE DATA DE DESLIGAMENTO DE FUNCIONÁRIO
+CREATE OR REPLACE FUNCTION Inserir_Data_Desligamento_Funcionario() RETURNS TRIGGER AS $$
+BEGIN
+    IF NEW.ativo = 0 THEN
+        NEW.data_desligamento = CURRENT_TIMESTAMP;
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE PLPGSQL;
+CREATE OR REPLACE TRIGGER Inserir_Data_Desligamento_Funcionario BEFORE UPDATE ON funcionario
+FOR EACH ROW WHEN (OLD.ativo IS DISTINCT FROM NEW.ativo) EXECUTE FUNCTION Inserir_Data_Desligamento_Funcionario();
+
+
+-- PEDIDO
+-- ATUALIZAÇÃO DE TIMESTAMP
+CREATE OR REPLACE FUNCTION Atualizar_Ultima_Atualizacao_Pedido() RETURNS TRIGGER AS $$
+BEGIN
+	NEW.ultima_atualizacao = CURRENT_TIMESTAMP;
+	RETURN NEW;
+END;
+$$ LANGUAGE PLPGSQL;
+CREATE OR REPLACE TRIGGER Atualizar_Ultima_Atualizacao_Pedido BEFORE INSERT OR UPDATE ON Pedido
+FOR EACH ROW EXECUTE FUNCTION Atualizar_Ultima_Atualizacao_Pedido();
+
+
+-- PAGAMENTO
+-- ATUALIZAÇÃO DE TIMESTAMP
+CREATE OR REPLACE FUNCTION Atualizar_Ultima_Atualizacao_Pagamento() RETURNS TRIGGER AS $$
+BEGIN
+	NEW.ultima_atualizacao = CURRENT_TIMESTAMP;
+	RETURN NEW;
+END;
+$$ LANGUAGE PLPGSQL;
+CREATE OR REPLACE TRIGGER Atualizar_Ultima_Atualizacao_Pagamento BEFORE INSERT OR UPDATE ON Pagamento
+FOR EACH ROW EXECUTE FUNCTION Atualizar_Ultima_Atualizacao_Pagamento();
+
+
+-- ITEM_PEDIDO
+-- ATUALIZAÇÃO DE TIMESTAMP
+CREATE OR REPLACE FUNCTION Atualizar_Ultima_Atualizacao_Item_Pedido() RETURNS TRIGGER AS $$
+BEGIN
+	NEW.ultima_atualizacao = CURRENT_TIMESTAMP;
+	RETURN NEW;
+END;
+$$ LANGUAGE PLPGSQL;
+CREATE OR REPLACE TRIGGER Atualizar_Ultima_Atualizacao_Item_Pedido BEFORE INSERT OR UPDATE ON Item_Pedido
+FOR EACH ROW EXECUTE FUNCTION Atualizar_Ultima_Atualizacao_Item_Pedido();
