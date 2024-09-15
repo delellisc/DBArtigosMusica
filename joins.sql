@@ -13,7 +13,7 @@ INNER JOIN funcionario f ON pe.funcionario_id = f.funcionario_id;
 -- seleciona valor e data de pagamento de um pedido
 SELECT pe.pedido_id, pa.valor AS valor_pagamento, pa.data_pagamento
 FROM pedido pe
-INNER JOIN pagamento pa ON pa.pagamento_id = pa.pagamento_id;
+INNER JOIN pagamento pa ON pa.pedido_id = pe.pedido_id
 
 -- Thiago 
 -- seleciona nome do produto, quantidade em estoque e cnpj do fornecedor
