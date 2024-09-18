@@ -14,8 +14,8 @@ INSERT INTO fornecedor (cnpj, endereco, ultima_atualizacao) VALUES
 
 INSERT INTO desconto (titulo, valor_desconto, ultima_atualizacao) VALUES
 ('Desconto de Inauguração', 15.00, NOW()),
-('Desconto de Verão', 20.00, , NOW()),
-('Desconto de Músico Profissional', 25.00, , NOW());
+('Desconto de Verão', 20.00, NOW()),
+('Desconto de Músico Profissional', 25.00, NOW());
 
 INSERT INTO produto (categoria_id, fornecedor_id, nome, descricao, marca, valor, ultima_atualizacao) VALUES
 (1, 1, 'Guitarra Elétrica', 'Guitarra Elétrica Stratocaster', 'Fender', 3500.00, NOW()),
