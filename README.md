@@ -137,9 +137,9 @@ RESULTADO:
 (6 rows)
 ```
 ## Funções
-Todas essas funções estão disponíveis em [functions.sql](functions.sql)
+Todas as funções estão disponíveis em [functions.sql](functions.sql). Não foram incluídas aqui pois era muita coisa.
 ## Procedures
-Todas essas procedures estão disponíveis em [procedures.sql](procedures.sql)
+Todas essas procedures estão disponíveis em [procedures.sql](procedures.sql). Não foram incluídas aqui pois era muita coisa.
 ## Subqueries
 Todas essas subqueries estão disponíveis em [subqueries.sql](subqueries.sql)
 
@@ -364,13 +364,13 @@ NOTICE:  Produto ID: 1, Valor antigo: 3500.00, Valor novo: 3675.0000
 NOTICE:  Produto ID: 9, Valor antigo: 2800.00, Valor novo: 2940.0000
 ```
 ## Backup
-Após criar todas as estruturas e dados persistentes no banco de dados, um backup foi realizado da seguinte forma:
+Após criar todas as estruturas e dados persistentes no banco de dados, um backup foi realizado. Ele está disponível em [backup/BKP_DBArtigosMusica.sql](backup/BKP_DBArtigosMusica.sql)
 ### Backup no Linux
 Dentro do diretório do repositório, os seguintes comandos foram executados:
 ```shell
 sudo su
 mkdir backup
-chmod 777 backup
+chmod o+w backup
 su postgres
 pg_dump DBArtigosMusica > ./backup/BKP_DBArtigosMusica.sql
 ```
