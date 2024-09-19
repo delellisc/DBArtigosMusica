@@ -136,7 +136,10 @@ RESULTADO:
  Keylly  | Ukulele Concert   |          1
 (6 rows)
 ```
-## Funções e Procedures
+## Funções
+Todas essas funções estão disponíveis em [functions.sql](functions.sql)
+## Procedures
+Todas essas procedures estão disponíveis em [procedures.sql](procedures.sql)
 ## Subqueries
 Todas essas subqueries estão disponíveis em [subqueries.sql](subqueries.sql)
 
@@ -273,11 +276,103 @@ RESULTADO:
 (9 rows)
 ```
 ## Cursores
+Todos esses cursores estão disponíveis em [cursores.sql](cursores.sql)
+
+CURSOR:
+``` SQL
+-- lista produtos com quantidade menor do que 10 no estoque
+CREATE OR REPLACE FUNCTION listar_produtos_com_estoque_baixo()
+RETURNS VOID AS $$
+DECLARE
+    cur_estoque_baixo CURSOR FOR
+    SELECT p.produto_id, p.nome, e.quantidade
+    FROM produto p
+    JOIN estoque e ON p.produto_id = e.produto_id
+    WHERE e.quantidade < 10;
+    
+    produto_id INTEGER;
+    nome TEXT;
+    quantidade INTEGER;
+BEGIN
+    OPEN cur_estoque_baixo;
+    
+    LOOP
+        FETCH cur_estoque_baixo INTO produto_id, nome, quantidade;
+        EXIT WHEN NOT FOUND;
+        
+        RAISE NOTICE 'Produto ID: %, Nome: %, Quantidade em estoque: %', produto_id, nome, quantidade;
+    END LOOP;
+    
+    CLOSE cur_estoque_baixo;
+END
+$$ LANGUAGE plpgsql;
+```
+QUERY:
+```SQL
+SELECT listar_produtos_com_estoque_baixo();
+```
+RESULTADO: (SAÍDA NA ABA "MESSAGES")
+```
+NOTICE:  Produto ID: 5, Nome: Vinil The Beatles - Abbey Road, Quantidade em estoque: 5
+NOTICE:  Produto ID: 6, Nome: Violão Clássico, Quantidade em estoque: 3
+NOTICE:  Produto ID: 8, Nome: Encordoamento para Guitarra, Quantidade em estoque: 7
+```
+
+CURSOR:
+``` SQL
+-- atualiza valor de produto com base em percentual por marca
+CREATE OR REPLACE FUNCTION ajustar_valor_produtos_por_marca(
+    p_marca TEXT,             -- Marca específica
+    p_percentual NUMERIC      -- Percentual de ajuste (ex.: 1.10 para +10%, 0.90 para -10%)
+)
+RETURNS VOID AS $$
+DECLARE
+    cur_atualizar_produto CURSOR FOR
+    SELECT produto_id, valor
+    FROM produto
+    WHERE marca = p_marca;
+
+    id_produto INTEGER;
+    valor_produto NUMERIC;
+BEGIN
+    OPEN cur_atualizar_produto;
+
+    LOOP
+        FETCH cur_atualizar_produto INTO id_produto, valor_produto;
+        EXIT WHEN NOT FOUND;
+
+        UPDATE produto
+        SET valor = valor_produto * p_percentual,
+            ultima_atualizacao = CURRENT_TIMESTAMP
+        WHERE produto_id = id_produto;
+
+        RAISE NOTICE 'Produto ID: %, Valor antigo: %, Valor novo: %', 
+                     id_produto, valor_produto, valor_produto * p_percentual;
+    END LOOP;
+
+    CLOSE cur_atualizar_produto;
+END
+$$ LANGUAGE plpgsql;
+```
+QUERY:
+```SQL
+SELECT ajustar_valor_produtos_por_marca('Fender', 1.05);
+```
+RESULTADO: (SAÍDA NA ABA "MESSAGES")
+```
+NOTICE:  Produto ID: 1, Valor antigo: 3500.00, Valor novo: 3675.0000
+NOTICE:  Produto ID: 9, Valor antigo: 2800.00, Valor novo: 2940.0000
+```
 ## Backup
+Após criar todas as estruturas e dados persistentes no banco de dados, um backup foi realizado da seguinte forma:
 ### Backup no Linux
+Dentro do diretório do repositório, os seguintes comandos foram executados:
 ```
-mkdir ~/backupSQL
-chmod 777 ~/backupSQL/
-cd ~/backupSQL/
-sudo -u postgres pg_dump -f bkp_DBArtigosMusica.sql DBArtigosMusica
+sudo su
+mkdir backup
+chmod 777 backup
+su postgres
+pg_dump DBArtigosMusica > ./backup/BKP_DBArtigosMusica.sql
 ```
+### Backup no Windows
+QUE DEUS PERDOE ESSAS POBRES ALMAS QUE USAM WINDOWS
