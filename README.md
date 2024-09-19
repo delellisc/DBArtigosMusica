@@ -12,6 +12,8 @@
 DER:
 ![Alt text](diagrama/DER.png)
 ## Joins
+Todos esses joins estão disponíveis em [joins.sql](joins.sql)
+
 QUERY:
 ```SQL
 -- seleciona nome e categoria de um produto
