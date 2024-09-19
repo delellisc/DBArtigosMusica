@@ -225,7 +225,7 @@ CREATE OR REPLACE PROCEDURE CRUD_Pedido (
 BEGIN
 	IF acao = 1 THEN
 		INSERT INTO Pedido(funcionario_id, cliente_id, data_pedido, previsao_entrega)
-		VALUES (funcionario_id_entrada, cliente_id_entrada, CURRENT_TIMESTAMP, Calcular_Previsao_Entrega(previsao_entrega_entrada);
+		VALUES (funcionario_id_entrada, cliente_id_entrada, CURRENT_TIMESTAMP, Calcular_Previsao_Entrega(previsao_entrega_entrada));
 	ELSIF acao = 0 THEN
 		UPDATE Pedido
 		SET funcionario_id = funcionario_id_entrada,
