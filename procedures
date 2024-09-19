@@ -18,10 +18,10 @@ BEGIN
 		DELETE FROM Categoria
 		WHERE categoria_id = id_entrada;
 	ELSE
-		RAISE NOTICE 'AÇÃO INVÁLIDA! 1 - INSERIR || 0 - ATUALIZAR || -1 - DELETAR'
+		RAISE NOTICE 'AÇÃO INVÁLIDA! 1 - INSERIR || 0 - ATUALIZAR || -1 - DELETAR';
 	END IF;
 END;
-LANGUAGE PLPGSQL;
+$$ LANGUAGE PLPGSQL;
 
 
 -- FORNECEDOR
@@ -46,10 +46,10 @@ BEGIN
 		DELETE FROM Fornecedor
 		WHERE fornecedor_id = id_entrada;
 	ELSE
-		RAISE NOTICE 'AÇÃO INVÁLIDA! 1 - INSERIR || 0 - ATUALIZAR || -1 - DELETAR'
+		RAISE NOTICE 'AÇÃO INVÁLIDA! 1 - INSERIR || 0 - ATUALIZAR || -1 - DELETAR';
 	END IF;
 END;
-LANGUAGE PLPGSQL;
+$$ LANGUAGE PLPGSQL;
 
 
 -- DESCONTO
@@ -74,10 +74,10 @@ BEGIN
 		DELETE FROM Desconto
 		WHERE desconto_id = id_entrada;
 	ELSE
-		RAISE NOTICE 'AÇÃO INVÁLIDA! 1 - INSERIR || 0 - ATUALIZAR || -1 - DELETAR'
+		RAISE NOTICE 'AÇÃO INVÁLIDA! 1 - INSERIR || 0 - ATUALIZAR || -1 - DELETAR';
 	END IF;
 END;
-LANGUAGE PLPGSQL;
+$$ LANGUAGE PLPGSQL;
 
 
 -- PRODUTO
@@ -110,10 +110,10 @@ BEGIN
 		DELETE FROM Produto
 		WHERE produto_id = id_entrada;
 	ELSE
-		RAISE NOTICE 'AÇÃO INVÁLIDA! 1 - INSERIR || 0 - ATUALIZAR || -1 - DELETAR'
+		RAISE NOTICE 'AÇÃO INVÁLIDA! 1 - INSERIR || 0 - ATUALIZAR || -1 - DELETAR';
 	END IF;
 END;
-LANGUAGE PLPGSQL;
+$$ LANGUAGE PLPGSQL;
 
 
 -- ESTOQUE
@@ -136,10 +136,10 @@ BEGIN
 		DELETE FROM Estoque
 		WHERE produto_id = produto_id_entrada;
 	ELSE
-		RAISE NOTICE 'AÇÃO INVÁLIDA! 1 - INSERIR || 0 - ATUALIZAR || -1 - DELETAR'
+		RAISE NOTICE 'AÇÃO INVÁLIDA! 1 - INSERIR || 0 - ATUALIZAR || -1 - DELETAR';
 	END IF;
 END;
-LANGUAGE PLPGSQL;
+$$ LANGUAGE PLPGSQL;
 
 
 -- CLIENTE
@@ -167,10 +167,10 @@ BEGIN
 		DELETE FROM Cliente
 		WHERE cliente_id = id_entrada;
 	ELSE
-		RAISE NOTICE 'AÇÃO INVÁLIDA! 1 - INSERIR || 0 - ATUALIZAR || -1 - DELETAR'
+		RAISE NOTICE 'AÇÃO INVÁLIDA! 1 - INSERIR || 0 - ATUALIZAR || -1 - DELETAR';
 	END IF;
 END;
-LANGUAGE PLPGSQL;
+$$ LANGUAGE PLPGSQL;
 
 
 -- FUNCIONARIO
@@ -205,10 +205,10 @@ BEGIN
 		DELETE FROM Funcionario
 		WHERE funcionario_id = id_entrada;
 	ELSE
-		RAISE NOTICE 'AÇÃO INVÁLIDA! 1 - INSERIR || 0 - ATUALIZAR || -1 - DELETAR'
+		RAISE NOTICE 'AÇÃO INVÁLIDA! 1 - INSERIR || 0 - ATUALIZAR || -1 - DELETAR';
 	END IF;
 END;
-LANGUAGE PLPGSQL;
+$$ LANGUAGE PLPGSQL;
 
 
 -- PEDIDO
@@ -225,20 +225,20 @@ CREATE OR REPLACE PROCEDURE CRUD_Pedido (
 BEGIN
 	IF acao = 1 THEN
 		INSERT INTO Pedido(funcionario_id, cliente_id, data_pedido, previsao_entrega)
-		VALUES (funcionario_id_entrada, cliente_id_entrada, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP + (INTERVAL previsao_entrega_entrada DAY));
+		VALUES (funcionario_id_entrada, cliente_id_entrada, CURRENT_TIMESTAMP, Calcular_Previsao_Entrega(previsao_entrega_entrada);
 	ELSIF acao = 0 THEN
 		UPDATE Pedido
 		SET funcionario_id = funcionario_id_entrada,
-			previsao_entrega = CURRENT_TIMESTAMP + INTERVAL previsao_entrega_entrada DAY
+			previsao_entrega = Calcular_Previsao_Entrega(previsao_entrega_entrada)
 		WHERE pedido_id = id_entrada;
 	ELSIF acao = -1 THEN
 		DELETE FROM Pedido
 		WHERE pedido_id = id_entrada;
 	ELSE
-		RAISE NOTICE 'AÇÃO INVÁLIDA! 1 - INSERIR || 0 - ATUALIZAR || -1 - DELETAR'
+		RAISE NOTICE 'AÇÃO INVÁLIDA! 1 - INSERIR || 0 - ATUALIZAR || -1 - DELETAR';
 	END IF;
 END;
-LANGUAGE PLPGSQL;
+$$ LANGUAGE PLPGSQL;
 
 
 -- PAGAMENTO
@@ -259,10 +259,10 @@ BEGIN
 		DELETE FROM Pagamento
 		WHERE pagamento_id = id_entrada;
 	ELSE
-		RAISE NOTICE 'AÇÃO INVÁLIDA! 1 - INSERIR || -1 - DELETAR'
+		RAISE NOTICE 'AÇÃO INVÁLIDA! 1 - INSERIR || -1 - DELETAR';
 	END IF;
 END;
-LANGUAGE PLPGSQL;
+$$ LANGUAGE PLPGSQL;
 
 
 -- ITEM_PEDIDO
@@ -282,7 +282,7 @@ BEGIN
 		DELETE FROM Item_Pedido
 		WHERE pedido_id = pedido_id_entrada AND produto_id = produto_id_entrada;
 	ELSE
-		RAISE NOTICE 'AÇÃO INVÁLIDA! 1 - INSERIR || -1 - DELETAR'
+		RAISE NOTICE 'AÇÃO INVÁLIDA! 1 - INSERIR || -1 - DELETAR';
 	END IF;
 END;
-LANGUAGE PLPGSQL;
+$$ LANGUAGE PLPGSQL;
