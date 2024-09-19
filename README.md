@@ -13,7 +13,7 @@ DER:
 ![Alt text](diagrama/DER.png)
 ## Joins
 QUERY:
-```
+```SQL
 -- seleciona nome e categoria de um produto
 SELECT p.nome AS produto, c.nome AS categoria
 FROM produto p
@@ -36,7 +36,7 @@ RESULTADO:
 (10 rows)
 ```
 QUERY:
-```
+```SQL
 -- seleciona cliente e funcionario envolvidos num pedido
 SELECT pe.pedido_id, cl.nome AS cliente, f.nome AS funcionario
 FROM pedido pe
@@ -53,7 +53,7 @@ RESULTADO:
 (3 rows)
 ```
 QUERY:
-```
+```SQL
 -- seleciona valor e data de pagamento de um pedido
 SELECT pe.pedido_id, pa.valor AS valor_pagamento, pa.data_pagamento
 FROM pedido pe
@@ -69,7 +69,7 @@ RESULTADO:
 (3 rows)
 ```
 QUERY:
-```
+```SQL
  -- seleciona nome do produto, quantidade em estoque e cnpj do fornecedor
 SELECT p.nome AS produto, e.quantidade AS quantidade_estoque, f.cnpj AS fornecedor
 FROM produto p
@@ -92,7 +92,7 @@ RESULTADO:
 (9 rows)
 ```
 QUERY:
-```
+```SQL
 -- seleciona nome do produto, título do desconto aplicado e valor total do pagamento
 SELECT pe.pedido_id AS pedido, p.nome AS produto, d.titulo AS desconto, pa.valor AS valor_pagamento
 FROM pagamento pa
@@ -114,7 +114,7 @@ RESULTADO:
 (6 rows)
 ```
 QUERY:
-```
+```SQL
 -- seleciona nome do cliente, nome do produto e quantidade do item no pedido
 SELECT c.nome AS cliente, p.nome AS produto, ip.quantidade AS quantidade
 FROM item_pedido ip
@@ -137,7 +137,7 @@ RESULTADO:
 ## Funções e Procedures
 ## Subqueries
 QUERY:
-```
+```SQL
  -- produtos acima da média de preço da categoria
 SELECT p.produto_id, p.nome, p.valor, p.categoria_id
 FROM produto p
@@ -159,7 +159,7 @@ RESULTADO:
 (5 rows)
 ```
 QUERY:
-```
+```SQL
 -- produto mais vendido (acima da média em relação aos outros produtos)
 SELECT p.nome, COUNT(ip.pedido_id) AS total_vendido
 FROM produto p
@@ -183,7 +183,7 @@ RESULTADO:
 (1 row)
 ```
 QUERY:
-```
+```SQL
 -- cliente com maior valor gasto
 SELECT c.nome, c.sobrenome, SUM(pg.valor) AS total_gasto
 FROM cliente c
@@ -211,7 +211,7 @@ RESULTADO:
 ## Triggers
 ## Views
 VIEW:
-```
+```SQL
 -- visualiza informações básicas de um pedido
 CREATE VIEW resumo_simples AS
 SELECT pe.pedido_id, cl.nome AS cliente, p.nome AS produto FROM pedido pe
@@ -220,7 +220,7 @@ INNER JOIN item_pedido ip ON pe.pedido_id = ip.pedido_id
 INNER JOIN produto p ON ip.produto_id = p.produto_id;
 ```
 QUERY:
-```
+```SQL
 -- seleciona a view
 SELECT * FROM resumo_simples;
 ```
@@ -237,7 +237,7 @@ RESULTADO:
 (6 rows)
 ```
 VIEW:
-```
+```SQL
 -- visualiza informações de estoque e vendas
 CREATE VIEW resumo_estoque_vendas AS
 SELECT p.nome AS produto, e.quantidade AS quantidade_estoque, COALESCE(SUM(ip.quantidade), 0) AS quantidade_vendida
@@ -247,7 +247,7 @@ LEFT JOIN item_pedido ip ON p.produto_id = ip.produto_id
 GROUP BY p.nome, e.quantidade;
 ```
 QUERY:
-```
+```SQL
  -- seleciona a view
 SELECT * FROM resumo_estoque_vendas;
 ```
