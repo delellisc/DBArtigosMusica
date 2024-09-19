@@ -367,7 +367,7 @@ NOTICE:  Produto ID: 9, Valor antigo: 2800.00, Valor novo: 2940.0000
 Após criar todas as estruturas e dados persistentes no banco de dados, um backup foi realizado da seguinte forma:
 ### Backup no Linux
 Dentro do diretório do repositório, os seguintes comandos foram executados:
-```
+```shell
 sudo su
 mkdir backup
 chmod 777 backup
