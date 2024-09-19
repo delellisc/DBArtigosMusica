@@ -138,6 +138,8 @@ RESULTADO:
 ```
 ## Funções e Procedures
 ## Subqueries
+Todas essas subqueries estão disponíveis em [subqueries.sql](subqueries.sql)
+
 QUERY:
 ```SQL
  -- produtos acima da média de preço da categoria
@@ -212,6 +214,8 @@ RESULTADO:
 ```
 ## Triggers
 ## Views
+Todas essas views estão disponíveis em [views.sql](views.sql)
+
 VIEW:
 ```SQL
 -- visualiza informações básicas de um pedido
